@@ -14,6 +14,7 @@ var Employee = function (employee) {
     this.created_at = new Date();
     this.updated_at = new Date();
 };
+
 Employee.create = function (newEmp, result) {
     dbConn.query("INSERT INTO employees set ?", newEmp, function (err, res) {
         if (err) {
@@ -26,6 +27,7 @@ Employee.create = function (newEmp, result) {
         }
     });
 };
+
 Employee.findById = function (id, result) {
     dbConn.query("Select * from employees where id = ? ", id, function (err,
         res) {
@@ -38,6 +40,7 @@ Employee.findById = function (id, result) {
         }
     });
 };
+
 Employee.findAll = function (result) {
     dbConn.query("Select * from employees", function (err, res) {
         if (err) {
@@ -50,6 +53,7 @@ Employee.findAll = function (result) {
         }
     });
 };
+
 Employee.update = function (id, employee, result) {
     dbConn.query("UPDATE employees SET first_name = ?, last_name = ?, email = ?, phone = ?, organization = ?, designation = ?, salary = ? WHERE id = ? ",
     [employee.first_name, employee.last_name, employee.email, employee.phone, employee.organization, employee.designation, employee.salary, id], function (err,
@@ -62,6 +66,7 @@ Employee.update = function (id, employee, result) {
         }
     });
 };
+
 Employee.delete = function (id, result) {
     dbConn.query("DELETE FROM employees WHERE id = ?", [id], function (err, res) {
         if (err) {
@@ -73,4 +78,5 @@ Employee.delete = function (id, result) {
         }
     });
 };
+
 module.exports = Employee;
